@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ClassDiagram Zoom="1" MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="chihu.MainForm" Collapsed="False">
+    <Position X="0.5" Y="0.5" Width="2.449962" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Enum Name="chihu.dog_type" Collapsed="False">
+    <Position X="0.5" Y="21.9" Width="1.621828" />
+    <Compartments />
+  </Enum>
+  <Class Name="chihu.AddDog" Collapsed="False">
+    <Position X="0.5" Y="23.4" Width="2.588752" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.ImportCSV" Collapsed="False">
+    <Position X="0.5" Y="30.3" Width="2.135592" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.Program" Collapsed="False">
+    <Position X="0.5" Y="33.3" Width="1.444186" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.AddShow" Collapsed="False">
+    <Position X="0.5" Y="34.6" Width="2.834425" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.AddPuppy" Collapsed="False">
+    <Position X="0.5" Y="46" Width="2.563561" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.AddVeteran" Collapsed="False">
+    <Position X="0.5" Y="50.4" Width="2.563561" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.NewDog" Collapsed="False">
+    <Position X="0.5" Y="54.8" Width="2.639025" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.NewPuppy" Collapsed="False">
+    <Position X="0.5" Y="63" Width="2.563561" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.NewVeteran" Collapsed="False">
+    <Position X="0.5" Y="67" Width="2.563561" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.AddPuppyShow" Collapsed="False">
+    <Position X="0.5" Y="71" Width="2.834425" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.AddVeteranShow" Collapsed="False">
+    <Position X="0.5" Y="78.6" Width="2.834425" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.AddBreederShow" Collapsed="False">
+    <Position X="0.5" Y="86" Width="2.39985" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="chihu.update" Collapsed="False">
+    <Position X="0.5" Y="92.5" Width="3.162492" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+</ClassDiagram>
