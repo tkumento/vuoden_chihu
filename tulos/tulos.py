@@ -87,7 +87,7 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 print('Processing: ' + row[paikka_index] + ' ' + row[date_index] + ' ' + row[karva_index])
 
                 #show location
-                output_file.write(row[paikka_index].upper() + ' ')
+                output_file.write(row[paikka_index].decode('utf-8').upper().encode('utf-8') + ' ')
 
                 #show type
                 if('Kansain' in row[tyyppi_index]):
