@@ -57,6 +57,16 @@ def output_line_wo_price(output_file, row, format_string, index):
         output_file.write(format_string + ' ' + enc_string + '\n')
     return
 
+def output_line_cap(output_file, row, format_string, index):
+    "tulosta rivi ilman palkintoja tiedostoon"
+    if row[index]:
+        dec_string = row[index].decode('utf-8')
+        cap_string = "-".join(w.capitalize() for w in dec_string.split('-'))
+        new_string = cap_string.title()
+        enc_string = new_string.encode('utf-8')
+        output_file.write(format_string + ' ' + enc_string + '\n')
+    return
+
 def output_line_wo_cap(output_file, row, format_string, index):
     "tulosta rivi ilman palkintoja tiedostoon"
     if row[index]:
@@ -140,7 +150,7 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                     output_file.write(')')
 
                 #judge
-                output_line_wo_price(output_file, row, '\nTuomari: ', tuomari_index)
+                output_line_cap(output_file, row, '\nTuomari: ', tuomari_index)
                 output_file.write('\n')
 
                 #PU & PN
