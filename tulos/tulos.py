@@ -1,6 +1,7 @@
 # coding=utf-8
 
 import csv
+import string
 
 def get_prices(string):
     "luo palkintostringi"
@@ -40,18 +41,26 @@ def get_prices(string):
     ret_string += ' '
     return ret_string
 
-def output_line(output_file, row, string, price_index, index):
+def output_line(output_file, row, format_string, price_index, index):
     "tulosta PU/PN rivi palkintoineen tiedostoon"
     if row[index]:
-        output_file.write(string + get_prices(row[price_index]) + row[index] + '\n')
-        #TODO: .capwords()
+        cap_string = string.capwords(row[index].decode('utf-8'))
+        enc_string = cap_string.encode('utf-8')
+        output_file.write(format_string + get_prices(row[price_index]) + enc_string + '\n')
     return
 
-def output_line_wo_price(output_file, row, string, index):
+def output_line_wo_price(output_file, row, format_string, index):
     "tulosta rivi ilman palkintoja tiedostoon"
     if row[index]:
-        output_file.write(string + ' ' + row[index] + '\n')
-        #TODO: .capwords()
+        cap_string = string.capwords(row[index].decode('utf-8'))
+        enc_string = cap_string.encode('utf-8')
+        output_file.write(format_string + ' ' + enc_string + '\n')
+    return
+
+def output_line_wo_cap(output_file, row, format_string, index):
+    "tulosta rivi ilman palkintoja tiedostoon"
+    if row[index]:
+        output_file.write(format_string + ' ' + row[index] + '\n')
     return
 
 with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
@@ -131,7 +140,7 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                     output_file.write(')')
 
                 #judge
-                output_file.write('\nTuomari: ' + row[tuomari_index])
+                output_line_wo_price(output_file, row, '\nTuomari: ', tuomari_index)
                 output_file.write('\n')
 
                 #PU & PN
@@ -161,6 +170,10 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 output_line_wo_price(output_file, row, 'VSP-VET', (vet_index + 1))
 
                 #Puppy
+                #cap_string = string.capwords(row[pentu_index].decode('utf-8'))
+                #print(cap_string.encode('utf-8'))
+                #print(cap_string)
+                #cap_string = row[paikka_index].encode('utf-8').capwords.decode('utf-8')
                 output_line_wo_price(output_file, row, 'ROP-Pentu', pentu_index)
                 output_line_wo_price(output_file, row, 'VSP-Pentu', (pentu_index + 1))
 
@@ -172,10 +185,10 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 output_file.write('\n\n')
 
                 #extras
-                output_line_wo_price(output_file, row, 'Uros sert lisätieto:', uros_info_index)
-                output_line_wo_price(output_file, row, 'Narttu sert lisätieto:', narttu_info_index)
-                output_line_wo_price(output_file, row, 'Yhteystieto:', email_index)
-                output_line_wo_price(output_file, row, 'Lisätiedot:', info_index)
+                output_line_wo_cap(output_file, row, 'Uros sert lisätieto:', uros_info_index)
+                output_line_wo_cap(output_file, row, 'Narttu sert lisätieto:', narttu_info_index)
+                output_line_wo_cap(output_file, row, 'Yhteystieto:', email_index)
+                output_line_wo_cap(output_file, row, 'Lisätiedot:', info_index)
                 output_file.write('\n\n')
             except ValueError:
                 #expected to have header row in CSV
