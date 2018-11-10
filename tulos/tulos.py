@@ -41,20 +41,24 @@ def get_prices(string):
     ret_string += ' '
     return ret_string
 
+def cap_string(raw_string):
+    "capitalize etc string"
+    quote = '’'.decode('utf-8')
+    cap_string = string.capwords(raw_string.decode('utf-8'))
+    rep_string = cap_string.replace(quote, "\'")
+    enc_string = rep_string.encode('utf-8')
+    return enc_string
+
 def output_line(output_file, row, format_string, price_index, index):
     "tulosta PU/PN rivi palkintoineen tiedostoon"
     if row[index]:
-        cap_string = string.capwords(row[index].decode('utf-8'))
-        enc_string = cap_string.encode('utf-8')
-        output_file.write(format_string + get_prices(row[price_index]) + enc_string + '\n')
+        output_file.write(format_string + get_prices(row[price_index]) + cap_string(row[index]) + '\n')
     return
 
 def output_line_wo_price(output_file, row, format_string, index):
     "tulosta rivi ilman palkintoja tiedostoon"
     if row[index]:
-        cap_string = string.capwords(row[index].decode('utf-8'))
-        enc_string = cap_string.encode('utf-8')
-        output_file.write(format_string + ' ' + enc_string + '\n')
+        output_file.write(format_string + ' ' + cap_string(row[index]) + '\n')
     return
 
 def output_line_cap(output_file, row, format_string, index):
@@ -103,10 +107,10 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 info_index = 41
                 detection_count = int(row[lkm_index])
 
-                print('Processing: ' + row[paikka_index] + ' ' + row[date_index] + ' ' + row[karva_index])
+                print('Processing: ' + row[paikka_index].rstrip() + ' ' + row[date_index] + ' ' + row[karva_index])
 
                 #show location
-                output_file.write(row[paikka_index].decode('utf-8').upper().encode('utf-8') + ' ')
+                output_file.write(row[paikka_index].decode('utf-8').upper().rstrip().encode('utf-8') + ' ')
 
                 #show type
                 if('Kansain' in row[tyyppi_index]):
@@ -150,7 +154,7 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                     output_file.write(')')
 
                 #judge
-                output_line_cap(output_file, row, '\nTuomari: ', tuomari_index)
+                output_line_cap(output_file, row, '\nTuomari:', tuomari_index)
                 output_file.write('\n')
 
                 #PU & PN
