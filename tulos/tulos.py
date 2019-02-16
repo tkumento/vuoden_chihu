@@ -110,6 +110,7 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 print('Processing: ' + row[paikka_index].rstrip() + ' ' + row[date_index] + ' ' + row[karva_index])
 
                 #show location
+                output_file.write('<h2>')
                 output_file.write(row[paikka_index].decode('utf-8').upper().rstrip().encode('utf-8') + ' ')
 
                 #show type
@@ -130,10 +131,10 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                     #formatted from yyyy-mm-dd to dd.mm.yyyy
                     splitted_date = row[date_index].split("-")
                     date_string = ".".join([splitted_date[2].lstrip("0"), splitted_date[1].lstrip("0"), splitted_date[0]])
-                    output_file.write(date_string + '\n')
+                    output_file.write(date_string + '</h2>\n')
                 else:
                     #no formatting (yet)
-                    output_file.write(row[date_index] + '\n')
+                    output_file.write(row[date_index] + '</h2>\n')
 
                 #coat
                 if ('Lyhyt' in row[karva_index]):
@@ -196,7 +197,7 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 output_line_wo_price(output_file, row, '2, KP', (kasv_index + 1))
                 output_line_wo_price(output_file, row, '3, KP', (kasv_index + 2))
                 output_line_wo_price(output_file, row, '4, KP', (kasv_index + 3))
-                output_file.write('\n\n')
+                output_file.write('\n<hr />\n\n')
 
                 #extras
                 output_line_wo_cap(output_file, row, 'Uros sert lisätieto:', uros_info_index)
