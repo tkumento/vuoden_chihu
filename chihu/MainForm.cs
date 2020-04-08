@@ -290,11 +290,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				LKDogResults.Sort((result, result2) => result2.points.CompareTo(result.points));
@@ -404,11 +404,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				foreach (dog_result dog in LKPuppyResults)
@@ -488,11 +488,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				foreach (dog_result dog in LKVeteranResults)
@@ -572,11 +572,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				foreach (breeder_result dog in LKBreederResults)
@@ -641,11 +641,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				foreach (parent_result dog in LKParentResults)
@@ -756,11 +756,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 
@@ -860,11 +860,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				foreach (dog_result dog in PKPuppyResults)
@@ -948,11 +948,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				foreach (dog_result dog in PKVeteranResults)
@@ -1035,11 +1035,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				foreach (breeder_result dog in PKBreederResults)
@@ -1107,11 +1107,11 @@ namespace chihu
 					file.WriteLine("<thead>");
 					file.WriteLine("<tr>");
 					file.WriteLine("<td align=\"LEFT\" width=\"58\" height=\"18\">Sijoitus</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"354\">Nimi</td>");
-					file.WriteLine("<td align=\"LEFT\" width=\"55\">Pisteet</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"348\">Nimi</td>");
+					file.WriteLine("<td align=\"LEFT\" width=\"61\">Pisteet</td>");
 					file.WriteLine("</tr>");
 					file.WriteLine("</thead>");
-					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"354\" /> <col width=\"55\" /></colgroup>");
+					file.WriteLine("<colgroup> <col width=\"58\" /> <col width=\"348\" /> <col width=\"61\" /></colgroup>");
 					file.WriteLine("<tbody>");
 				}
 				foreach (parent_result dog in PKParentResults)

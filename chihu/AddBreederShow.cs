@@ -170,6 +170,7 @@ namespace chihu
 			catch (Exception crap)
 			{
 			dog_count = 0;
+			var _ = crap;
 			}				
 		}
 		
