@@ -27,7 +27,10 @@ namespace chihu
 		public int dog_count = 0;
 		public string show_name;
 		public bool modify_operation;
-				
+		public int valid = 1;
+		public int spare1 = 0;
+		public string spare2 = "";
+		
 		public AddBreederShow(bool modify, int current_coat, string current_show)
 		{
 
@@ -40,7 +43,7 @@ namespace chihu
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 			coatBox.Text = "0";
-			coatBox.SelectedIndex = 0;		
+			coatBox.SelectedIndex = 0;
 			modify_operation = modify;
 			
 			populate(modify, current_coat, current_show);
@@ -105,18 +108,30 @@ namespace chihu
 					var temp_breeder2 = reader["breeder2"];
 					var temp_breeder3 = reader["breeder3"];
 					var temp_breeder4 = reader["breeder4"];
+					var temp_valid = reader["valid"];
 					
 					rop = temp_rop.ToString();
 					kp2 = temp_breeder2.ToString();
 					kp3 = temp_breeder3.ToString();
 					kp4 = temp_breeder4.ToString();
-		
+					
 					dogCountBox.Text = temp_dog_count.ToString();
 					dog_count = Convert.ToInt32(temp_dog_count);
 					ropBox.Text = rop;
 					kp2Box.Text = kp2;
 					kp3Box.Text = kp3;
 					kp4Box.Text = kp4;
+					if((int)temp_valid == 1)
+					{
+						checkBox1.Checked = true;
+						valid = 1;
+					}
+					else
+					{
+						checkBox1.Checked = false;
+						valid = 0;
+					}
+					 
 
 				}
 			}
@@ -127,9 +142,9 @@ namespace chihu
 		{
 			string sql;
 			SQLiteCommand command;
-		
-		SQLiteConnection m_dbConnection;
-		coat = coatBox.SelectedIndex;	
+			
+			SQLiteConnection m_dbConnection;
+			coat = coatBox.SelectedIndex;
 			m_dbConnection =
 				new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
 			m_dbConnection.Open();
@@ -153,7 +168,7 @@ namespace chihu
 				kp3Box.Items.Add(reader["breeder"]);
 				kp4Box.Items.Add(reader["breeder"]);
 			}
-			m_dbConnection.Close();				
+			m_dbConnection.Close();
 		}
 		
 		void ShowBoxTextChanged(object sender, EventArgs e)
@@ -165,23 +180,23 @@ namespace chihu
 		{
 			try
 			{
-			dog_count = Convert.ToInt32(dogCountBox.Text);
+				dog_count = Convert.ToInt32(dogCountBox.Text);
 			}
 			catch (Exception crap)
 			{
-			dog_count = 0;
-			var _ = crap;
-			}				
+				dog_count = 0;
+				var _ = crap;
+			}
 		}
 		
 		void RopBoxSelectedIndexChanged(object sender, EventArgs e)
 		{
-		rop = ropBox.Text;			
+			rop = ropBox.Text;
 		}
 		
 		void Kp2BoxSelectedIndexChanged(object sender, EventArgs e)
 		{
-		kp2 = kp2Box.Text;			
+			kp2 = kp2Box.Text;
 		}
 		
 		void Kp3BoxSelectedIndexChanged(object sender, EventArgs e)
@@ -207,22 +222,25 @@ namespace chihu
 				new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
 			m_dbConnection.Open();
 
-            string sql;
-            SQLiteCommand command;
-		sql = "insert into breeder (coat, show, rop_breeder, breeder2, breeder3, breeder4, count)" +
-			"values ( @dog_coat, @show, @rop, @kp2, @kp3, @kp4, @count)";
-		command = new SQLiteCommand(sql, m_dbConnection);
-		command.Parameters.AddWithValue("@dog_coat", coat);
-		command.Parameters.AddWithValue("@show", show_name);
-		command.Parameters.AddWithValue("@count", dog_count);
-		command.Parameters.AddWithValue("@rop", rop);
-		command.Parameters.AddWithValue("@kp2", kp2);
-		command.Parameters.AddWithValue("@kp3", kp3);
-		command.Parameters.AddWithValue("@kp4", kp4);
-		command.ExecuteNonQuery();
+			string sql;
+			SQLiteCommand command;
+			sql = "insert into breeder (valid, coat, show, rop_breeder, breeder2, breeder3, breeder4, count, spare1, spare2)" +
+				"values ( @valid, @dog_coat, @show, @rop, @kp2, @kp3, @kp4, @count, @spare1, @spare2)";
+			command = new SQLiteCommand(sql, m_dbConnection);
+			command.Parameters.AddWithValue("@valid", valid);
+			command.Parameters.AddWithValue("@dog_coat", coat);
+			command.Parameters.AddWithValue("@show", show_name);
+			command.Parameters.AddWithValue("@count", dog_count);
+			command.Parameters.AddWithValue("@rop", rop);
+			command.Parameters.AddWithValue("@kp2", kp2);
+			command.Parameters.AddWithValue("@kp3", kp3);
+			command.Parameters.AddWithValue("@kp4", kp4);
+			command.Parameters.AddWithValue("@spare1", spare1);
+			command.Parameters.AddWithValue("@spare2", spare2);
+			command.ExecuteNonQuery();
 
-		m_dbConnection.Close();   
-		MessageBox.Show("Added");						
+			m_dbConnection.Close();
+			MessageBox.Show("Added");
 		}
 		
 		void UpdateButtonClick(object sender, EventArgs e)
@@ -247,9 +265,10 @@ namespace chihu
 			{
 				kp4 = null;
 			}
-								
-			sql = "UPDATE breeder SET rop_breeder = @rop, breeder2 = @kp2, breeder3 = @kp3, breeder4 = @kp4, count = @dog_count where coat = @coat and show = @show";
+			
+			sql = "UPDATE breeder SET valid = @valid, rop_breeder = @rop, breeder2 = @kp2, breeder3 = @kp3, breeder4 = @kp4, count = @dog_count where coat = @coat and show = @show";
 			command = new SQLiteCommand(sql, m_dbConnection);
+			command.Parameters.AddWithValue("@valid", valid);
 			command.Parameters.AddWithValue("@coat", coat);
 			command.Parameters.AddWithValue("@show", show_name);
 			command.Parameters.AddWithValue("@dog_count", dog_count);
@@ -263,5 +282,17 @@ namespace chihu
 			MessageBox.Show("Updated");
 		}
 		
+		
+		void CheckBox1CheckedChanged(object sender, EventArgs e)
+		{
+			if(checkBox1.Checked == true)
+			{
+				valid = 1;
+			}
+			else
+			{
+				valid = 0;
+			}
+		}
 	}
 }

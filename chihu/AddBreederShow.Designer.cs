@@ -51,6 +51,7 @@ namespace chihu
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.textBox5 = new System.Windows.Forms.TextBox();
 			this.updateButton = new System.Windows.Forms.Button();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// coatBox
@@ -215,11 +216,24 @@ namespace chihu
 			this.updateButton.Visible = false;
 			this.updateButton.Click += new System.EventHandler(this.UpdateButtonClick);
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.Checked = true;
+			this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBox1.Location = new System.Drawing.Point(286, 24);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(104, 24);
+			this.checkBox1.TabIndex = 15;
+			this.checkBox1.Text = "Valid";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1CheckedChanged);
+			// 
 			// AddBreederShow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(597, 539);
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.updateButton);
 			this.Controls.Add(this.textBox5);
 			this.Controls.Add(this.textBox4);
@@ -240,6 +254,7 @@ namespace chihu
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.Button updateButton;
 		private System.Windows.Forms.TextBox textBox5;
 		private System.Windows.Forms.TextBox textBox4;

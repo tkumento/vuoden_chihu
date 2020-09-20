@@ -49,6 +49,7 @@ namespace chihu
 			this.closeButton = new System.Windows.Forms.Button();
 			this.judgeComboBox = new System.Windows.Forms.ComboBox();
 			this.updateButton = new System.Windows.Forms.Button();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// coatBox
@@ -191,11 +192,24 @@ namespace chihu
 			this.updateButton.Visible = false;
 			this.updateButton.Click += new System.EventHandler(this.UpdateButtonClick);
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.Checked = true;
+			this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBox1.Location = new System.Drawing.Point(347, 26);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(104, 24);
+			this.checkBox1.TabIndex = 13;
+			this.checkBox1.Text = "Valid";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1CheckedChanged);
+			// 
 			// AddPuppyShow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(597, 538);
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.updateButton);
 			this.Controls.Add(this.judgeComboBox);
 			this.Controls.Add(this.closeButton);
@@ -214,6 +228,7 @@ namespace chihu
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.Button updateButton;
 		private System.Windows.Forms.ComboBox judgeComboBox;
 		private System.Windows.Forms.Button closeButton;

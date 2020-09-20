@@ -84,19 +84,20 @@ namespace chihu
 			command = new SQLiteCommand(sql, m_dbConnection);
 			command.ExecuteNonQuery();
 
-			sql = "create table if not exists shows (coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT, rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER, FOREIGN KEY(rop) REFERENCES dogs(id), FOREIGN KEY(vsp) REFERENCES dogs(id), FOREIGN KEY(pu2) REFERENCES dogs(id), FOREIGN KEY(pu3) REFERENCES dogs(id), FOREIGN KEY(pu4) REFERENCES dogs(id), FOREIGN KEY(pn2) REFERENCES dogs(id), FOREIGN KEY(pn3) REFERENCES dogs(id), FOREIGN KEY(pn4) REFERENCES dogs(id))";
+
+			sql = "create table if not exists shows (valid INT, coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT, rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER, spare1 INTEGER, spare2 VARCHAR(50), FOREIGN KEY(rop) REFERENCES dogs(id), FOREIGN KEY(vsp) REFERENCES dogs(id), FOREIGN KEY(pu2) REFERENCES dogs(id), FOREIGN KEY(pu3) REFERENCES dogs(id), FOREIGN KEY(pu4) REFERENCES dogs(id), FOREIGN KEY(pn2) REFERENCES dogs(id), FOREIGN KEY(pn3) REFERENCES dogs(id), FOREIGN KEY(pn4) REFERENCES dogs(id))";
 			command = new SQLiteCommand(sql, m_dbConnection);
 			command.ExecuteNonQuery();
 
-			sql = "create table if not exists puppy_shows (coat INT, show VARCHAR(30), judge VARCHAR(50), puppy_count INT, rop_puppy INTEGER, vsp_puppy INTEGER, FOREIGN KEY(rop_puppy) REFERENCES puppy(id), FOREIGN KEY(vsp_puppy) REFERENCES puppy(id))";
+			sql = "create table if not exists puppy_shows (valid INT, coat INT, show VARCHAR(30), judge VARCHAR(50), puppy_count INT, rop_puppy INTEGER, vsp_puppy INTEGER, spare1 INTEGER, spare2 VARCHAR(50), FOREIGN KEY(rop_puppy) REFERENCES puppy(id), FOREIGN KEY(vsp_puppy) REFERENCES puppy(id))";
 			command = new SQLiteCommand(sql, m_dbConnection);
 			command.ExecuteNonQuery();
 
-			sql = "create table if not exists veteran_shows (coat INT, show VARCHAR(30), judge VARCHAR(50), veteran_count INT, rop_vet INTEGER, vsp_vet INTEGER, FOREIGN KEY(rop_vet) REFERENCES veteran(id), FOREIGN KEY(vsp_vet) REFERENCES veteran(id))";
+			sql = "create table if not exists veteran_shows (valid INT, coat INT, show VARCHAR(30), judge VARCHAR(50), veteran_count INT, rop_vet INTEGER, vsp_vet INTEGER, spare1 INTEGER, spare2 VARCHAR(50), FOREIGN KEY(rop_vet) REFERENCES veteran(id), FOREIGN KEY(vsp_vet) REFERENCES veteran(id))";
 			command = new SQLiteCommand(sql, m_dbConnection);
 			command.ExecuteNonQuery();
 
-			sql = "create table if not exists breeder (coat INT, show VARCHAR(30), rop_breeder VARCHAR(30), breeder2 VARCHAR(30), breeder3 VARCHAR(30), breeder4 VARCHAR(30), count )";
+			sql = "create table if not exists breeder (valid INT, coat INT, show VARCHAR(30), rop_breeder VARCHAR(30), breeder2 VARCHAR(30), breeder3 VARCHAR(30), breeder4 VARCHAR(30), count INTEGER, spare1 INTEGER, spare2 VARCHAR(50))";
 			command = new SQLiteCommand(sql, m_dbConnection);
 			command.ExecuteNonQuery();
 
@@ -2642,7 +2643,7 @@ namespace chihu
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
-				sql = "create table if not exists shows (coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT, rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER, FOREIGN KEY(rop) REFERENCES dogs(id), FOREIGN KEY(vsp) REFERENCES dogs(id), FOREIGN KEY(pu2) REFERENCES dogs(id), FOREIGN KEY(pu3) REFERENCES dogs(id), FOREIGN KEY(pu4) REFERENCES dogs(id), FOREIGN KEY(pn2) REFERENCES dogs(id), FOREIGN KEY(pn3) REFERENCES dogs(id), FOREIGN KEY(pn4) REFERENCES dogs(id))";
+				sql = "create table if not exists shows (valid INT, coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT, rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER, spare1 INTEGER, spare2 VARCHAR(50), FOREIGN KEY(rop) REFERENCES dogs(id), FOREIGN KEY(vsp) REFERENCES dogs(id), FOREIGN KEY(pu2) REFERENCES dogs(id), FOREIGN KEY(pu3) REFERENCES dogs(id), FOREIGN KEY(pu4) REFERENCES dogs(id), FOREIGN KEY(pn2) REFERENCES dogs(id), FOREIGN KEY(pn3) REFERENCES dogs(id), FOREIGN KEY(pn4) REFERENCES dogs(id))";
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
@@ -2666,7 +2667,7 @@ namespace chihu
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
-				sql = "create table if not exists puppy_shows (coat INT, show VARCHAR(30), judge VARCHAR(50), puppy_count INT, rop_puppy INTEGER, vsp_puppy INTEGER, FOREIGN KEY(rop_puppy) REFERENCES puppy(id), FOREIGN KEY(vsp_puppy) REFERENCES puppy(id))";
+				sql = "create table if not exists puppy_shows (valid INT, coat INT, show VARCHAR(30), judge VARCHAR(50), puppy_count INT, rop_puppy INTEGER, vsp_puppy INTEGER, spare1 INTEGER, spare2 VARCHAR(50), FOREIGN KEY(rop_puppy) REFERENCES puppy(id), FOREIGN KEY(vsp_puppy) REFERENCES puppy(id))";
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
@@ -2690,7 +2691,7 @@ namespace chihu
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
-				sql = "create table if not exists veteran_shows (coat INT, show VARCHAR(30), judge VARCHAR(50), veteran_count INT, rop_vet INTEGER, vsp_vet INTEGER, FOREIGN KEY(rop_vet) REFERENCES veteran(id), FOREIGN KEY(vsp_vet) REFERENCES veteran(id))";
+				sql = "create table if not exists veteran_shows (valid INT, coat INT, show VARCHAR(30), judge VARCHAR(50), veteran_count INT, rop_vet INTEGER, vsp_vet INTEGER, spare1 INTEGER, spare2 VARCHAR(50), FOREIGN KEY(rop_vet) REFERENCES veteran(id), FOREIGN KEY(vsp_vet) REFERENCES veteran(id))";
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
@@ -2714,7 +2715,7 @@ namespace chihu
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
-				sql = "create table if not exists breeder (coat INT, show VARCHAR(30), rop_breeder VARCHAR(30), breeder2 VARCHAR(30), breeder3 VARCHAR(30), breeder4 VARCHAR(30), count )";
+				sql = "create table if not exists breeder (valid INT, coat INT, show VARCHAR(30), rop_breeder VARCHAR(30), breeder2 VARCHAR(30), breeder3 VARCHAR(30), breeder4 VARCHAR(30), count INTEGER, spare1 INTEGER, spare2 VARCHAR(50))";
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
@@ -2749,7 +2750,7 @@ namespace chihu
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				
-				sql = "create table if not exists puppy_shows (coat INT, show VARCHAR(30), judge VARCHAR(50), puppy_count INT, rop_puppy INTEGER, vsp_puppy INTEGER, FOREIGN KEY(rop_puppy) REFERENCES puppy(id), FOREIGN KEY(vsp_puppy) REFERENCES puppy(id))";
+				sql = "create table if not exists puppy_shows (coat INT, show VARCHAR(30), judge VARCHAR(50), puppy_count INT, rop_puppy INTEGER, vsp_puppy INTEGER, FOREIGN KEY(rop_puppy) REFERENCES puppy(id), FOREIGN KEY(vsp_puppy) REFERENCES puppy(id), valid INT)";
 				command = new SQLiteCommand(sql, m_dbConnection);
 				command.ExecuteNonQuery();
 				

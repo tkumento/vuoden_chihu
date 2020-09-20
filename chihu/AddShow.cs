@@ -35,6 +35,9 @@ namespace chihu
 		public string show_name;
 		public string judge;
 		public bool modify_operation = false;
+		public int valid = 1;
+		public int spare1 = 0;
+		public string spare2 = "";
 		
 		public AddShow(bool modify, int current_coat, string current_show)
 		{
@@ -120,6 +123,7 @@ namespace chihu
 					var temp_pn2_id = reader["pn2"];
 					var temp_pn3_id = reader["pn3"];
 					var temp_pn4_id = reader["pn4"];
+					var temp_valid = reader["valid"];
 					
 					rop_id = Convert.ToInt32(temp_rop_id);
 					vsp_id = Convert.ToInt32(temp_vsp_id);
@@ -153,6 +157,17 @@ namespace chihu
 					pn2NameBox.Text = id_to_name(ref m_dbConnection, pn2_id);
 					pn3NameBox.Text = id_to_name(ref m_dbConnection, pn3_id);
 					pn4NameBox.Text = id_to_name(ref m_dbConnection, pn4_id);
+										
+					if((int)temp_valid == 1)
+					{
+						checkBox1.Checked = true;
+						valid = 1;
+					}
+					else
+					{
+						checkBox1.Checked = false;
+						valid = 0;
+					}
 					//break;
 				}
 			}
@@ -272,9 +287,10 @@ namespace chihu
             string sql;
             SQLiteCommand command;
 //coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT, rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER
-		sql = "insert into shows (coat, int_show, show, judge, dog_count, rop, vsp, pu2, pu3, pu4, pn2, pn3, pn4) " +
-			"values ( @dog_coat, @int_show, @show, @judge, @dog_count, @rop, @vsp, @pu2, @pu3, @pu4, @pn2, @pn3, @pn4)";
+		sql = "insert into shows (valid, coat, int_show, show, judge, dog_count, rop, vsp, pu2, pu3, pu4, pn2, pn3, pn4, spare1, spare2) " +
+			"values ( @valid, @dog_coat, @int_show, @show, @judge, @dog_count, @rop, @vsp, @pu2, @pu3, @pu4, @pn2, @pn3, @pn4, @spare1, @spare2)";
 		command = new SQLiteCommand(sql, m_dbConnection);
+		command.Parameters.AddWithValue("@valid", valid);
 		command.Parameters.AddWithValue("@dog_coat", coat);
 		command.Parameters.AddWithValue("@int_show", int_show);
 		command.Parameters.AddWithValue("@show", show_name);
@@ -288,6 +304,8 @@ namespace chihu
 		command.Parameters.AddWithValue("@pn2", pn2_id);
 		command.Parameters.AddWithValue("@pn3", pn3_id);
 		command.Parameters.AddWithValue("@pn4", pn4_id);
+		command.Parameters.AddWithValue("@spare1", spare1);
+		command.Parameters.AddWithValue("@spare2", spare2);
 		command.ExecuteNonQuery();
 
 		m_dbConnection.Close();   
@@ -362,9 +380,10 @@ namespace chihu
 			string sql;
 			SQLiteCommand command;
 
-			sql = "UPDATE shows SET rop = @rop, vsp = @vsp, pu2 = @pu2, pu3 = @pu3, pu4 = @pu4, pn2 = @pn2, pn3 = @pn3, pn4 = @pn4, int_show = @int_show, judge = @judge, dog_count = @dog_count where coat = @coat and show = @show";
+			sql = "UPDATE shows SET valid = @valid, rop = @rop, vsp = @vsp, pu2 = @pu2, pu3 = @pu3, pu4 = @pu4, pn2 = @pn2, pn3 = @pn3, pn4 = @pn4, int_show = @int_show, judge = @judge, dog_count = @dog_count where coat = @coat and show = @show";
 			//sql = "UPDATE shows SET dog_count = @dog_count where show = @show";
 			command = new SQLiteCommand(sql, m_dbConnection);
+			command.Parameters.AddWithValue("@valid", valid);
 			command.Parameters.AddWithValue("@rop", rop_id);
 			command.Parameters.AddWithValue("@vsp", vsp_id);
 			command.Parameters.AddWithValue("@pu2", pu2_id);
@@ -385,5 +404,17 @@ namespace chihu
 		}
 		
 
+		
+		void CheckBox1CheckedChanged(object sender, EventArgs e)
+		{
+			if(checkBox1.Checked == true)
+			{
+				valid = 1;
+			}
+			else
+			{
+				valid = 0;
+			}
+		}
 	}
 }

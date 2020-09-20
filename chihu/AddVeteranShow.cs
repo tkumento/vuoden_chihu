@@ -26,6 +26,9 @@ namespace chihu
 		public string show_name;
 		public string judge;
 		public bool modify_operation;
+		public int valid = 1;
+		public int spare1 = 0;
+		public string spare2 = "";
 		public AddVeteranShow(bool modify, int current_coat, string current_show)
 		{
 			//
@@ -38,18 +41,18 @@ namespace chihu
 			modify_operation = modify;
 			show_name = current_show;
 			coat = current_coat;
-			populate(modify, current_coat, current_show);        			
+			populate(modify, current_coat, current_show);
 		}
 		
 		void populate( bool modify, int current_coat, string current_show)
 		{
-		    SQLiteConnection m_dbConnection;
+			SQLiteConnection m_dbConnection;
 			m_dbConnection =
 				new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
 			m_dbConnection.Open();
 
-            string sql;
-            SQLiteCommand command;
+			string sql;
+			SQLiteCommand command;
 			judgeComboBox.Items.Clear();
 			
 			sql = "select distinct judge from shows order by judge";
@@ -89,11 +92,12 @@ namespace chihu
 					var temp_dog_count = reader["veteran_count"];
 					var temp_rop_id = reader["rop_vet"];
 					var temp_vsp_id = reader["vsp_vet"];
+					var temp_valid = reader["valid"];
 					
 					rop_id = Convert.ToInt32(temp_rop_id);
 					vsp_id = Convert.ToInt32(temp_vsp_id);
 					
-		
+					
 					judgeComboBox.Text = temp_judge.ToString();
 					judge =  temp_judge.ToString();
 					dogCountBox.Text = temp_dog_count.ToString();
@@ -101,17 +105,27 @@ namespace chihu
 					ropVetBox.Text = id_to_name(ref m_dbConnection, rop_id);
 					vspVetBox.Text = id_to_name(ref m_dbConnection, vsp_id);
 
+					if((int)temp_valid == 1)
+					{
+						checkBox1.Checked = true;
+						valid = 1;
+					}
+					else
+					{
+						checkBox1.Checked = false;
+						valid = 0;
+					}
 				}
 				
 			}
-			m_dbConnection.Close();          
+			m_dbConnection.Close();
 		}
 		
 		string id_to_name(ref SQLiteConnection m_dbConnection, int id)
 		{
 			string name = "";
 			string sql;
-            SQLiteCommand command;
+			SQLiteCommand command;
 			
 			sql = "select name from veteran where id = @dog_id";
 			
@@ -124,7 +138,7 @@ namespace chihu
 				name = temp_name.ToString();
 			}
 			return name;
-		}		
+		}
 		
 		void CloseButtonClick(object sender, EventArgs e)
 		{
@@ -133,7 +147,7 @@ namespace chihu
 		
 		void CoatBoxSelectedIndexChanged(object sender, EventArgs e)
 		{
-		coat = coatBox.SelectedIndex;
+			coat = coatBox.SelectedIndex;
 		}
 		
 		void ShowBoxTextChanged(object sender, EventArgs e)
@@ -151,13 +165,13 @@ namespace chihu
 		{
 			try
 			{
-			dog_count = Convert.ToInt32(dogCountBox.Text);
+				dog_count = Convert.ToInt32(dogCountBox.Text);
 			}
 			catch (Exception crap)
 			{
-			dog_count = 0;
-			var _ = crap;
-			}			
+				dog_count = 0;
+				var _ = crap;
+			}
 		}
 		
 		void RopVetButtonClick(object sender, EventArgs e)
@@ -177,7 +191,7 @@ namespace chihu
 			addDialog.ShowDialog();
 			vsp_id = addDialog.return_id;
 			name = addDialog.return_name;
-			vspVetBox.Text = name;			
+			vspVetBox.Text = name;
 		}
 		
 		void JudgeBoxClick(object sender, EventArgs e)
@@ -202,21 +216,24 @@ namespace chihu
 				new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
 			m_dbConnection.Open();
 
-            string sql;
-            SQLiteCommand command;
-		sql = "insert into veteran_shows (coat, show, judge, veteran_count, rop_vet, vsp_vet)" +
-			"values ( @dog_coat, @show, @judge, @veteran_count, @rop_vet, @vsp_vet)";
-		command = new SQLiteCommand(sql, m_dbConnection);
-		command.Parameters.AddWithValue("@dog_coat", coat);
-		command.Parameters.AddWithValue("@show", show_name);
-		command.Parameters.AddWithValue("@judge", judge);
-		command.Parameters.AddWithValue("@veteran_count", dog_count);
-		command.Parameters.AddWithValue("@rop_vet", rop_id);
-		command.Parameters.AddWithValue("@vsp_vet", vsp_id);
-		command.ExecuteNonQuery();
+			string sql;
+			SQLiteCommand command;
+			sql = "insert into veteran_shows (valid, coat, show, judge, veteran_count, rop_vet, vsp_vet, spare1, spare2)" +
+				"values ( @valid, @dog_coat, @show, @judge, @veteran_count, @rop_vet, @vsp_vet, @spare1, @spare2)";
+			command = new SQLiteCommand(sql, m_dbConnection);
+			command.Parameters.AddWithValue("@valid", valid);
+			command.Parameters.AddWithValue("@dog_coat", coat);
+			command.Parameters.AddWithValue("@show", show_name);
+			command.Parameters.AddWithValue("@judge", judge);
+			command.Parameters.AddWithValue("@veteran_count", dog_count);
+			command.Parameters.AddWithValue("@rop_vet", rop_id);
+			command.Parameters.AddWithValue("@vsp_vet", vsp_id);
+			command.Parameters.AddWithValue("@spare1", spare1);
+			command.Parameters.AddWithValue("@spare2", spare2);
+			command.ExecuteNonQuery();
 
-		m_dbConnection.Close();   
-		MessageBox.Show("Added");				
+			m_dbConnection.Close();
+			MessageBox.Show("Added");
 		}
 		
 		void JudgeComboBoxSelectedIndexChanged(object sender, EventArgs e)
@@ -234,8 +251,9 @@ namespace chihu
 			string sql;
 			SQLiteCommand command;
 
-			sql = "UPDATE veteran_shows SET rop_vet = @rop, vsp_vet = @vsp, judge = @judge, veteran_count = @dog_count where coat = @coat and show = @show";
+			sql = "UPDATE veteran_shows SET valid = @valid, rop_vet = @rop, vsp_vet = @vsp, judge = @judge, veteran_count = @dog_count where coat = @coat and show = @show";
 			command = new SQLiteCommand(sql, m_dbConnection);
+			command.Parameters.AddWithValue("@valid", valid);
 			command.Parameters.AddWithValue("@rop", rop_id);
 			command.Parameters.AddWithValue("@vsp", vsp_id);
 			command.Parameters.AddWithValue("@judge", judge);
@@ -245,7 +263,19 @@ namespace chihu
 			command.ExecuteNonQuery();
 
 			m_dbConnection.Close();
-			MessageBox.Show("Updated");			
+			MessageBox.Show("Updated");
+		}
+		
+		void CheckBox1CheckedChanged(object sender, EventArgs e)
+		{
+			if(checkBox1.Checked == true)
+			{
+				valid = 1;
+			}
+			else
+			{
+				valid = 0;
+			}
 		}
 	}
 }
