@@ -82,7 +82,7 @@ namespace chihu
 			this.sireBox.FormattingEnabled = true;
 			this.sireBox.Location = new System.Drawing.Point(42, 66);
 			this.sireBox.Name = "sireBox";
-			this.sireBox.Size = new System.Drawing.Size(150, 21);
+			this.sireBox.Size = new System.Drawing.Size(205, 21);
 			this.sireBox.TabIndex = 3;
 			this.sireBox.Text = "Sire";
 			this.sireBox.SelectedIndexChanged += new System.EventHandler(this.SireBoxSelectedIndexChanged);
@@ -95,7 +95,7 @@ namespace chihu
 			this.sireCoatBox.Items.AddRange(new object[] {
 									"LK",
 									"PK"});
-			this.sireCoatBox.Location = new System.Drawing.Point(212, 66);
+			this.sireCoatBox.Location = new System.Drawing.Point(270, 66);
 			this.sireCoatBox.Name = "sireCoatBox";
 			this.sireCoatBox.Size = new System.Drawing.Size(107, 21);
 			this.sireCoatBox.TabIndex = 4;
@@ -108,7 +108,7 @@ namespace chihu
 			this.damBox.FormattingEnabled = true;
 			this.damBox.Location = new System.Drawing.Point(42, 105);
 			this.damBox.Name = "damBox";
-			this.damBox.Size = new System.Drawing.Size(150, 21);
+			this.damBox.Size = new System.Drawing.Size(205, 21);
 			this.damBox.TabIndex = 5;
 			this.damBox.Text = "Dam";
 			this.damBox.SelectedIndexChanged += new System.EventHandler(this.DamBoxSelectedIndexChanged);
@@ -121,7 +121,7 @@ namespace chihu
 			this.damCoatBox.Items.AddRange(new object[] {
 									"LK",
 									"PK"});
-			this.damCoatBox.Location = new System.Drawing.Point(212, 105);
+			this.damCoatBox.Location = new System.Drawing.Point(270, 105);
 			this.damCoatBox.Name = "damCoatBox";
 			this.damCoatBox.Size = new System.Drawing.Size(107, 21);
 			this.damCoatBox.TabIndex = 6;
@@ -141,7 +141,7 @@ namespace chihu
 			// 
 			this.dogBox.Location = new System.Drawing.Point(348, 25);
 			this.dogBox.Name = "dogBox";
-			this.dogBox.Size = new System.Drawing.Size(100, 20);
+			this.dogBox.Size = new System.Drawing.Size(131, 20);
 			this.dogBox.TabIndex = 2;
 			this.dogBox.Text = "Name";
 			this.dogBox.TextChanged += new System.EventHandler(this.DogBoxTextChanged);
@@ -170,7 +170,7 @@ namespace chihu
 			// 
 			// reverseOrderBox
 			// 
-			this.reverseOrderBox.Location = new System.Drawing.Point(454, 23);
+			this.reverseOrderBox.Location = new System.Drawing.Point(485, 23);
 			this.reverseOrderBox.Name = "reverseOrderBox";
 			this.reverseOrderBox.Size = new System.Drawing.Size(104, 24);
 			this.reverseOrderBox.TabIndex = 11;

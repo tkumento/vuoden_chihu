@@ -72,9 +72,9 @@ namespace chihu
 			// 
 			// dogBox
 			// 
-			this.dogBox.Location = new System.Drawing.Point(343, 25);
+			this.dogBox.Location = new System.Drawing.Point(325, 25);
 			this.dogBox.Name = "dogBox";
-			this.dogBox.Size = new System.Drawing.Size(100, 20);
+			this.dogBox.Size = new System.Drawing.Size(134, 20);
 			this.dogBox.TabIndex = 2;
 			this.dogBox.Text = "Name";
 			this.dogBox.TextChanged += new System.EventHandler(this.DogBoxTextChanged);

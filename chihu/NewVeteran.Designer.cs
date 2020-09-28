@@ -69,9 +69,9 @@ namespace chihu
 			// 
 			// dogBox
 			// 
-			this.dogBox.Location = new System.Drawing.Point(348, 26);
+			this.dogBox.Location = new System.Drawing.Point(332, 26);
 			this.dogBox.Name = "dogBox";
-			this.dogBox.Size = new System.Drawing.Size(100, 20);
+			this.dogBox.Size = new System.Drawing.Size(142, 20);
 			this.dogBox.TabIndex = 2;
 			this.dogBox.Text = "Name";
 			this.dogBox.TextChanged += new System.EventHandler(this.DogBoxTextChanged);
@@ -79,7 +79,7 @@ namespace chihu
 			// 
 			// doneButton
 			// 
-			this.doneButton.Location = new System.Drawing.Point(480, 12);
+			this.doneButton.Location = new System.Drawing.Point(496, 12);
 			this.doneButton.Name = "doneButton";
 			this.doneButton.Size = new System.Drawing.Size(75, 23);
 			this.doneButton.TabIndex = 3;
@@ -89,7 +89,7 @@ namespace chihu
 			// 
 			// closeButton
 			// 
-			this.closeButton.Location = new System.Drawing.Point(480, 67);
+			this.closeButton.Location = new System.Drawing.Point(496, 67);
 			this.closeButton.Name = "closeButton";
 			this.closeButton.Size = new System.Drawing.Size(75, 23);
 			this.closeButton.TabIndex = 4;
@@ -99,7 +99,7 @@ namespace chihu
 			// 
 			// updateButton
 			// 
-			this.updateButton.Location = new System.Drawing.Point(480, 38);
+			this.updateButton.Location = new System.Drawing.Point(496, 38);
 			this.updateButton.Name = "updateButton";
 			this.updateButton.Size = new System.Drawing.Size(75, 23);
 			this.updateButton.TabIndex = 5;

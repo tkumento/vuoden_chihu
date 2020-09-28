@@ -70,14 +70,14 @@ namespace chihu
 			this.dogBox.FormattingEnabled = true;
 			this.dogBox.Location = new System.Drawing.Point(342, 24);
 			this.dogBox.Name = "dogBox";
-			this.dogBox.Size = new System.Drawing.Size(121, 21);
+			this.dogBox.Size = new System.Drawing.Size(162, 21);
 			this.dogBox.TabIndex = 2;
 			this.dogBox.Text = "Dog";
 			this.dogBox.SelectedIndexChanged += new System.EventHandler(this.DogBoxSelectedIndexChanged);
 			// 
 			// doneButton
 			// 
-			this.doneButton.Location = new System.Drawing.Point(510, 21);
+			this.doneButton.Location = new System.Drawing.Point(510, 24);
 			this.doneButton.Name = "doneButton";
 			this.doneButton.Size = new System.Drawing.Size(75, 23);
 			this.doneButton.TabIndex = 3;

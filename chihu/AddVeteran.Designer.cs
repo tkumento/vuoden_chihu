@@ -70,7 +70,7 @@ namespace chihu
 			this.dogBox.FormattingEnabled = true;
 			this.dogBox.Location = new System.Drawing.Point(319, 25);
 			this.dogBox.Name = "dogBox";
-			this.dogBox.Size = new System.Drawing.Size(121, 21);
+			this.dogBox.Size = new System.Drawing.Size(147, 21);
 			this.dogBox.TabIndex = 2;
 			this.dogBox.Text = "Dog";
 			this.dogBox.SelectedIndexChanged += new System.EventHandler(this.DogBoxSelectedIndexChanged);
