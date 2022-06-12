@@ -15,7 +15,14 @@ def get_prices(string):
         if 'VSP-VET' == price_part:
             ret_string += ', VSP-VET'
 
-    #prio 2 CACIB/NORD SERT
+    #prio 2 VET
+    for price_part in splitted_string:
+        if 'ROP-JUN' == price_part:
+            ret_string += ', ROP-JUN'
+        if 'VSP-JUN' == price_part:
+            ret_string += ', VSP-JUN'
+
+    #prio 3 CACIB/NORD SERT
     for price_part in splitted_string:
         if 'CACIB' == price_part:
             ret_string += ', CACIB'
@@ -26,17 +33,37 @@ def get_prices(string):
         if 'VARA-NORD SERT' == price_part:
             ret_string += ', VARA-NORD SERT'
 
-    #prio 3 SERT
+    #prio 4 SERT
     for price_part in splitted_string:
         if 'SERT' == price_part:
             ret_string += ', SERT'
         if 'VARA-SERT' == price_part:
             ret_string += ', VARA-SERT'
 
-    #prio 4 MVA
+    #prio 5 JUN-SERT
+    for price_part in splitted_string:
+        if 'JUN-SERT' == price_part:
+            ret_string += ', JUN-SERT'
+
+    # prio 6 VET-SERT
+    for price_part in splitted_string:
+        if 'VET-SERT' == price_part:
+            ret_string += ', VET-SERT'
+
+    #prio 7 MVA
     for price_part in splitted_string:
         if 'MVA' == price_part:
             ret_string += ', MVA'
+
+    # prio 8 JUN MVA
+    for price_part in splitted_string:
+        if 'JUN MVA' == price_part:
+            ret_string += ', JUN MVA'
+
+    # prio 9 MVA
+    for price_part in splitted_string:
+        if 'VET MVA' == price_part:
+            ret_string += ', VET MVA'
 
     ret_string += ' '
     return ret_string
@@ -99,12 +126,27 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 narttu_info_index = 26
                 pentu_lkm_index = 27
                 pentu_index = 29
+                vet_sukupuoli_index = 33
                 vet_lkm_index = 31
-                vet_index = 33
-                kasv_lkm_index = 35
-                kasv_index = 36
-                email_index = 40
-                info_index = 41
+                vet_index = 34
+                vet_rop_sert_index = 35
+                vet_rop_sert_muu_index = 36
+                vet_rop_sert_muu_palkinto_index = 37
+                vet_vsp_sert_index = 38
+                vet_vsp_sert_muu_index = 40
+                vet_vsp_sert_muu_palkinto_index = 41
+                jun_sukupuoli_index = 42
+                jun_index = 43
+                jun_rop_sert_index = 44
+                jun_rop_sert_muu_index = 45
+                jun_rop_sert_muu_palkinto_index = 46
+                jun_vsp_sert_index = 47
+                jun_vsp_sert_muu_index = 49
+                jun_vsp_sert_muu_palkinto_index = 50
+                kasv_lkm_index = 51
+                kasv_index = 52
+                email_index = 56
+                info_index = 57
                 detection_count = int(row[lkm_index])
 
                 print('Processing: ' + row[paikka_index].rstrip() + ' ' + row[date_index] + ' ' + row[karva_index])
@@ -165,24 +207,42 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                     output_line(output_file, row, 'PU-2',(uros_palkinto + 1), (uros_index + 1))
                     output_line(output_file, row, 'PU-3', (uros_palkinto + 2), (uros_index + 2))
                     output_line(output_file, row, 'PU-4', (uros_palkinto + 3), (uros_index + 3))
+                    #TODO:sijoittumattomien urosten vet/jun tulokset
                     output_line(output_file, row, 'VSP, PN-1', narttu_palkinto, narttu_index)
                     output_line(output_file, row, 'PN-2', (narttu_palkinto + 1), (narttu_index + 1))
                     output_line(output_file, row, 'PN-3', (narttu_palkinto + 2), (narttu_index + 2))
                     output_line(output_file, row, 'PN-4', (narttu_palkinto + 3), (narttu_index + 3))
+                    #TODO:sijoittumattomien narttujen vet/jun tulokset
                 else:
                     #narttu ROP
                     output_line(output_file, row, 'ROP, PN-1', narttu_palkinto, narttu_index)
                     output_line(output_file, row, 'PN-2', (narttu_palkinto + 1), (narttu_index + 1))
                     output_line(output_file, row, 'PN-3', (narttu_palkinto + 2), (narttu_index + 2))
                     output_line(output_file, row, 'PN-4', (narttu_palkinto + 3), (narttu_index + 3))
+                    #TODO:sijoittumattomien narttujen vet/jun tulokset
                     output_line(output_file, row, 'VSP, PU-1', uros_palkinto, uros_index)
                     output_line(output_file, row, 'PU-2', (uros_palkinto + 1), (uros_index + 1))
                     output_line(output_file, row, 'PU-3', (uros_palkinto + 2), (uros_index + 2))
                     output_line(output_file, row, 'PU-4', (uros_palkinto + 3), (uros_index + 3))
+                    #TODO:sijoittumattomien urosten vet/jun tulokset
 
                 #VET
-                output_line_wo_price(output_file, row, 'ROP-VET', vet_index)
-                output_line_wo_price(output_file, row, 'VSP-VET', (vet_index + 1))
+                #TODO:tätä ei tarvita tässä
+                #output_line_wo_price(output_file, row, 'ROP-VET', vet_index)
+                output_line(output_file, row, 'ROP-VET', vet_rop_sert_index, vet_index)
+                output_line(output_file, row, 'VET-SERT', vet_rop_sert_muu_palkinto_index, vet_rop_sert_muu_index )
+                #output_line_wo_price(output_file, row, 'VSP-VET', (vet_index + 3))
+                output_line(output_file, row, 'VSP-VET', vet_vsp_sert_index, (vet_index + 4))
+                output_line(output_file, row, 'VET-SERT', vet_vsp_sert_muu_palkinto_index, vet_vsp_sert_muu_index)
+
+                # JUN
+                # TODO:tätä ei tarvita tässä
+                #output_line_wo_price(output_file, row, 'ROP-JUN', jun_index)
+                output_line(output_file, row, 'ROP-JUN', jun_rop_sert_index, jun_index)
+                output_line(output_file, row, 'JUN-SERT', jun_rop_sert_muu_palkinto_index, jun_rop_sert_muu_index)
+                #output_line_wo_price(output_file, row, 'VSP-JUN', (jun_index + 3))
+                output_line(output_file, row, 'VSP-JUN', jun_vsp_sert_index, (jun_index + 4))
+                output_line(output_file, row, 'JUN-SERT', jun_vsp_sert_muu_palkinto_index, jun_vsp_sert_muu_index)
 
                 #Puppy
                 #cap_string = string.capwords(row[pentu_index].decode('utf-8'))
@@ -210,3 +270,4 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 print('header row ignored')
             except Exception as e:
                 print('Other error ' + str(e))
+
