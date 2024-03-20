@@ -65,6 +65,26 @@ def get_prices(string, format_string):
         if 'VET MVA' == price_part:
             ret_string += ', VET MVA'
 
+    # prio 10 J-CACIB
+    for price_part in splitted_string:
+        if 'J-CACIB' == price_part:
+            ret_string += ', J-CACIB'
+
+    # prio 11 V-CACIB
+    for price_part in splitted_string:
+        if 'V-CACIB' == price_part:
+            ret_string += ', V-CACIB'
+
+    # prio 12 NORD JUN-SERT
+    for price_part in splitted_string:
+        if 'V-CACIB' == price_part:
+            ret_string += ', NORD JUN-SERT'
+
+    # prio 13 NORD VET-SERT
+    for price_part in splitted_string:
+        if 'V-CACIB' == price_part:
+            ret_string += ', NORD VET-SERT'
+
     ret_string += ' '
 
     if format_string == "":
