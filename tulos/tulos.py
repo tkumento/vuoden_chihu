@@ -77,12 +77,12 @@ def get_prices(string, format_string):
 
     # prio 12 NORD JUN-SERT
     for price_part in splitted_string:
-        if 'V-CACIB' == price_part:
+        if 'NORD JUN-SERT' == price_part:
             ret_string += ', NORD JUN-SERT'
 
     # prio 13 NORD VET-SERT
     for price_part in splitted_string:
-        if 'V-CACIB' == price_part:
+        if 'NORD VET-SERT' == price_part:
             ret_string += ', NORD VET-SERT'
 
     ret_string += ' '
