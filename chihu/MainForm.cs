@@ -237,9 +237,9 @@ namespace chihu
 			progressBar1.PerformStep();
 			calculate_results(ref PKDogResults, 1);
 			progressBar1.PerformStep();
-			calculate_parents(ref LKDogResults, ref LKParentResults, ref PKParentResults, debug);
+			calculate_parents(ref LKDogResults, ref LKParentResults, ref PKParentResults, debug, 0);
 			progressBar1.PerformStep();
-			calculate_parents(ref PKDogResults, ref LKParentResults, ref PKParentResults, debug);
+			calculate_parents(ref PKDogResults, ref LKParentResults, ref PKParentResults, debug, 1);
 			progressBar1.PerformStep();
 			calculate_breeders(ref LKDogResults, ref LKBreederResults);
 			progressBar1.PerformStep();
@@ -354,7 +354,7 @@ namespace chihu
 					prev_points = points;
 					if(debug == true)
 					{
-						debug_string = ",debug: " + dog.show1 + ":" + dog.p1 + "   " + dog.show2  + ":" + dog.p2  + "   " + dog.show3 + ":" + dog.p3 + "   " + dog.show4 + ":" + dog.p4 + "   " + dog.show5 + ":" + dog.p5 + "   " + dog.show6 + ":" + dog.p6 + " "; 
+						debug_string = ",debug: (id:" + dog.dog_id + ")" + dog.show1 + ":" + dog.p1 + "   " + dog.show2  + ":" + dog.p2  + "   " + dog.show3 + ":" + dog.p3 + "   " + dog.show4 + ":" + dog.p4 + "   " + dog.show5 + ":" + dog.p5 + "   " + dog.show6 + ":" + dog.p6 + " "; 
 					}
 					else
 					{
@@ -808,7 +808,7 @@ namespace chihu
 					prev_points = points;
 					if(debug == true)
 					{
-						debug_string = ",debug: " + dog.show1 + ":" + dog.p1 + "   " + dog.show2  + ":" + dog.p2  + "   " + dog.show3 + ":" + dog.p3 + "   " + dog.show4 + ":" + dog.p4 + "   " + dog.show5 + ":" + dog.p5 + "   " + dog.show6 + ":" + dog.p6 + " "; 
+						debug_string = ",debug: (id:" + dog.dog_id + ")" + dog.show1 + ":" + dog.p1 + "   " + dog.show2  + ":" + dog.p2  + "   " + dog.show3 + ":" + dog.p3 + "   " + dog.show4 + ":" + dog.p4 + "   " + dog.show5 + ":" + dog.p5 + "   " + dog.show6 + ":" + dog.p6 + " "; 
 					}
 					else
 					{
@@ -1927,7 +1927,7 @@ namespace chihu
 		}
 		
 	
-		void calculate_parents(ref List<dog_result> Results, ref List<parent_result> LKParent, ref List<parent_result> PKParent, bool debug)
+		void calculate_parents(ref List<dog_result> Results, ref List<parent_result> LKParent, ref List<parent_result> PKParent, bool debug, int coat_id)
 		{
 			int id;
 			int count;
@@ -1944,7 +1944,10 @@ namespace chihu
 			m_dbConnection =
 				new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;foreign keys=true;");
 			m_dbConnection.Open();
-			File.Delete("parent_debug.txt");
+			if(coat_id == 0)
+			{
+				File.Delete("parent_debug.txt");
+			}
 			using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"parent_debug.txt", true, Encoding.UTF8))
 			{
 			//TODO: debug parents here
@@ -2133,6 +2136,11 @@ namespace chihu
 			}
 			if(dog_id != 0)
 			{
+				//tuomo debug specific dog
+				//if(dog_id == 2159)
+				{
+				//	int found_debug = 1;
+				}
 				points = base_points + 2 * int_show + (int)(dog_amount/10);
 				int index = DogResults.FindIndex(dog_result=>dog_result.dog_id == dog_id);
 				result = DogResults.Find(dog_result=>dog_result.dog_id == dog_id);

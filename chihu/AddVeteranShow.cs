@@ -277,5 +277,123 @@ namespace chihu
 				valid = 0;
 			}
 		}
+		
+		public class dogIdentity
+		{
+			public Int32 id;
+			public string dog_name;
+		};
+		
+		public dogIdentity GuessDog(string dog_name, int dog_coat_id)
+		{
+			string sql;
+			SQLiteCommand command;
+			dogIdentity dog_from_db = new dogIdentity
+			{
+				id = 0,
+				dog_name = ""
+			};
+
+			if(dog_name.Length > 0)
+			{
+				dog_from_db.id = 0;
+				
+				SQLiteConnection m_dbConnection;
+				m_dbConnection =
+					new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
+				m_dbConnection.Open();
+				
+				sql = "select id from veteran where name = @dog_name AND dogcoat = @dog_coat";
+				
+				//sql = "select id from dogs where name = @dog_name AND dogcoat = @dog_coat";
+				command = new SQLiteCommand(sql, m_dbConnection);
+				command.Parameters.AddWithValue("@dog_name", dog_name);
+				command.Parameters.AddWithValue("@dog_coat", dog_coat_id);
+				SQLiteDataReader reader = command.ExecuteReader();
+				while (reader.Read())
+				{
+					dog_from_db.id = Convert.ToInt32(reader["id"]);
+					dog_from_db.dog_name = dog_name;
+				}
+				m_dbConnection.Close();
+			}
+			return dog_from_db;
+		}
+		
+		
+		string string_to_upper(string input_s)
+		{
+			char[] output_s = input_s.ToCharArray();
+			int index;
+			
+			
+			index = input_s.IndexOf('-');
+			if(index != -1)
+			{
+				output_s[index + 1] = Char.ToUpper(output_s[index + 1]);
+			}
+			
+			for(int i = 0 ; i < output_s.Length; i++)
+			{
+				if(output_s[i] == 'é')
+				{
+					output_s[i] = 'e';
+				}
+			}
+			
+			string return_string = new string(output_s);
+			return return_string;
+		}
+		
+		string GetDogFromStrings(string result)
+		{
+			string dog_name_from_string = "";
+			string[] lines = textBoxGuessVeteran.Text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+			foreach (string s in lines)
+			{
+				if(s.Contains(result))
+				{
+					int index = 1;
+					string line = s;
+					string[] result_words = s.Split(',');
+					string last_word = result_words[result_words.Length - 1].Trim();
+					string[] words = last_word.Split(' ');
+					if(words[index] == "MVA")
+					{
+						index++;
+					}
+					dog_name_from_string = string_to_upper(words[index]);
+					index++;
+					//dog_name_from_string = words[1];
+					for(int i = index ; i < words.Length ; i++)
+					{
+						dog_name_from_string += " " + string_to_upper(words[i]);
+						//dog_name_from_string += " " + words[i];
+					}
+					
+					break;
+				}
+			}
+			return dog_name_from_string;
+		}
+		
+		void ButtonGuessClick(object sender, EventArgs e)
+		{
+			string name;
+			string result_name;
+			dogIdentity dog_from_db;
+			
+			result_name = GetDogFromStrings("ROP-VET");
+			dog_from_db = GuessDog(result_name, coat);
+			rop_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			ropVetBox.Text = name;
+			
+			result_name = GetDogFromStrings("VSP-VET");
+			dog_from_db = GuessDog(result_name, coat);
+			vsp_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			vspVetBox.Text = name;
+		}
 	}
 }

@@ -11,8 +11,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
-//coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT, 
-//rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER, 
+//coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT,
+//rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER,
 //FOREIGN KEY(rop) REFERENCES dogs(id), FOREIGN KEY(vsp) REFERENCES dogs(id), FOREIGN KEY(pu2) REFERENCES dogs(id), FOREIGN KEY(pu3) REFERENCES dogs(id), FOREIGN KEY(pu4) REFERENCES dogs(id), FOREIGN KEY(pn2) REFERENCES dogs(id), FOREIGN KEY(pn3) REFERENCES dogs(id), FOREIGN KEY(pn4) REFERENCES dogs(id))";
 namespace chihu
 {
@@ -73,8 +73,8 @@ namespace chihu
 				new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
 			m_dbConnection.Open();
 
-            string sql;
-            SQLiteCommand command;
+			string sql;
+			SQLiteCommand command;
 			judgeComboBox.Items.Clear();
 			
 			sql = "select distinct judge from shows order by judge";
@@ -157,7 +157,7 @@ namespace chihu
 					pn2NameBox.Text = id_to_name(ref m_dbConnection, pn2_id);
 					pn3NameBox.Text = id_to_name(ref m_dbConnection, pn3_id);
 					pn4NameBox.Text = id_to_name(ref m_dbConnection, pn4_id);
-										
+					
 					if((int)temp_valid == 1)
 					{
 						checkBox1.Checked = true;
@@ -172,7 +172,7 @@ namespace chihu
 				}
 			}
 			
-			m_dbConnection.Close();				
+			m_dbConnection.Close();
 			m_dbConnection.Dispose();
 		}
 		
@@ -180,7 +180,7 @@ namespace chihu
 		{
 			string name = "";
 			string sql;
-            SQLiteCommand command;
+			SQLiteCommand command;
 			
 			sql = "select name from dogs where id = @dog_id";
 			
@@ -213,7 +213,7 @@ namespace chihu
 			addDialog.ShowDialog();
 			vsp_id = addDialog.return_id;
 			name = addDialog.return_name;
-			vspNameBox.Text = name;			
+			vspNameBox.Text = name;
 		}
 		
 		void Pu2ButtonClick(object sender, EventArgs e)
@@ -284,54 +284,54 @@ namespace chihu
 				new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
 			m_dbConnection.Open();
 
-            string sql;
-            SQLiteCommand command;
-//coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT, rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER
-		sql = "insert into shows (valid, coat, int_show, show, judge, dog_count, rop, vsp, pu2, pu3, pu4, pn2, pn3, pn4, spare1, spare2) " +
-			"values ( @valid, @dog_coat, @int_show, @show, @judge, @dog_count, @rop, @vsp, @pu2, @pu3, @pu4, @pn2, @pn3, @pn4, @spare1, @spare2)";
-		command = new SQLiteCommand(sql, m_dbConnection);
-		command.Parameters.AddWithValue("@valid", valid);
-		command.Parameters.AddWithValue("@dog_coat", coat);
-		command.Parameters.AddWithValue("@int_show", int_show);
-		command.Parameters.AddWithValue("@show", show_name);
-		command.Parameters.AddWithValue("@judge", judge);
-		command.Parameters.AddWithValue("@dog_count", dog_count);
-		command.Parameters.AddWithValue("@rop", rop_id);
-		command.Parameters.AddWithValue("@vsp", vsp_id);
-		command.Parameters.AddWithValue("@pu2", pu2_id);
-		command.Parameters.AddWithValue("@pu3", pu3_id);
-		command.Parameters.AddWithValue("@pu4", pu4_id);
-		command.Parameters.AddWithValue("@pn2", pn2_id);
-		command.Parameters.AddWithValue("@pn3", pn3_id);
-		command.Parameters.AddWithValue("@pn4", pn4_id);
-		command.Parameters.AddWithValue("@spare1", spare1);
-		command.Parameters.AddWithValue("@spare2", spare2);
-		command.ExecuteNonQuery();
+			string sql;
+			SQLiteCommand command;
+			//coat INT, int_show INT, show VARCHAR(30), judge VARCHAR(50), dog_count INT, rop INTEGER, vsp INTEGER, pu2 INTEGER, pu3 INTEGER, pu4 INTEGER, pn2 INTEGER, pn3 INTEGER, pn4 INTEGER
+			sql = "insert into shows (valid, coat, int_show, show, judge, dog_count, rop, vsp, pu2, pu3, pu4, pn2, pn3, pn4, spare1, spare2) " +
+				"values ( @valid, @dog_coat, @int_show, @show, @judge, @dog_count, @rop, @vsp, @pu2, @pu3, @pu4, @pn2, @pn3, @pn4, @spare1, @spare2)";
+			command = new SQLiteCommand(sql, m_dbConnection);
+			command.Parameters.AddWithValue("@valid", valid);
+			command.Parameters.AddWithValue("@dog_coat", coat);
+			command.Parameters.AddWithValue("@int_show", int_show);
+			command.Parameters.AddWithValue("@show", show_name);
+			command.Parameters.AddWithValue("@judge", judge);
+			command.Parameters.AddWithValue("@dog_count", dog_count);
+			command.Parameters.AddWithValue("@rop", rop_id);
+			command.Parameters.AddWithValue("@vsp", vsp_id);
+			command.Parameters.AddWithValue("@pu2", pu2_id);
+			command.Parameters.AddWithValue("@pu3", pu3_id);
+			command.Parameters.AddWithValue("@pu4", pu4_id);
+			command.Parameters.AddWithValue("@pn2", pn2_id);
+			command.Parameters.AddWithValue("@pn3", pn3_id);
+			command.Parameters.AddWithValue("@pn4", pn4_id);
+			command.Parameters.AddWithValue("@spare1", spare1);
+			command.Parameters.AddWithValue("@spare2", spare2);
+			command.ExecuteNonQuery();
 
-		m_dbConnection.Close();   
-		MessageBox.Show("Added");
+			m_dbConnection.Close();
+			MessageBox.Show("Added");
 		}
 		
 		void CoatBoxSelectedIndexChanged(object sender, EventArgs e)
 		{
-		coat = coatBox.SelectedIndex;			
+			coat = coatBox.SelectedIndex;
 		}
 		
 		void ShowTypeBoxSelectedIndexChanged(object sender, EventArgs e)
 		{
-		int_show = showTypeBox.SelectedIndex;			
+			int_show = showTypeBox.SelectedIndex;
 		}
 		
 		void AmountBoxTextChanged(object sender, EventArgs e)
 		{
 			try
 			{
-			dog_count = Convert.ToInt32(amountBox.Text);
+				dog_count = Convert.ToInt32(amountBox.Text);
 			}
 			catch (Exception crap)
 			{
-			dog_count = 0;
-			var _ = crap;
+				dog_count = 0;
+				var _ = crap;
 			}
 		}
 		
@@ -367,7 +367,7 @@ namespace chihu
 		
 		void JudgeComboBoxSelectedIndexChanged(object sender, EventArgs e)
 		{
-			judge = judgeComboBox.Text;	
+			judge = judgeComboBox.Text;
 		}
 		
 		void UpdateButtonClick(object sender, EventArgs e)
@@ -416,5 +416,173 @@ namespace chihu
 				valid = 0;
 			}
 		}
+		
+		public class dogIdentity
+		{
+			public Int32 id;
+			public string dog_name;
+		};
+		
+		public dogIdentity GuessDog(string dog_name, int dog_coat_id)
+		{
+			string sql;
+			SQLiteCommand command;
+			dogIdentity dog_from_db = new dogIdentity
+			{
+				id = 0,
+				dog_name = ""
+			};
+
+			dog_from_db.id = 0;
+			if(dog_name.Length > 0)
+			{
+				SQLiteConnection m_dbConnection;
+				m_dbConnection =
+					new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
+				m_dbConnection.Open();
+				
+				sql = "select id from dogs where name = @dog_name AND dogcoat = @dog_coat";
+				
+				//sql = "select id from dogs where name = @dog_name AND dogcoat = @dog_coat";
+				command = new SQLiteCommand(sql, m_dbConnection);
+				command.Parameters.AddWithValue("@dog_name", dog_name);
+				command.Parameters.AddWithValue("@dog_coat", dog_coat_id);
+				SQLiteDataReader reader = command.ExecuteReader();
+				while (reader.Read())
+				{
+					dog_from_db.id = Convert.ToInt32(reader["id"]);
+					dog_from_db.dog_name = dog_name;
+				}
+				m_dbConnection.Close();
+			}
+			return dog_from_db;
+		}
+		
+		
+		string string_to_upper(string input_s)
+		{
+			char[] output_s = input_s.ToCharArray();
+			int index;
+			
+						
+			index = input_s.IndexOf('-');
+			if(index != -1)
+			{
+				output_s[index + 1] = Char.ToUpper(output_s[index + 1]);
+			}
+			
+			for(int i = 0 ; i < output_s.Length; i++)
+			{
+				if(output_s[i] == 'é')
+				{
+					output_s[i] = 'e';
+				}
+			}
+			
+			string return_string = new string(output_s);
+			return return_string;
+		}
+		
+		string GetDogFromStrings(string result)
+		{
+			string dog_name_from_string = "";
+			string[] lines = textBoxGuess.Text.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+			foreach (string s in lines)
+			{
+				if(s.StartsWith(result))
+				{
+					int index = 1;
+					string line = s;
+					string[] result_words = s.Split(',');
+					string last_word = result_words[result_words.Length - 1].Trim();
+					string[] words = last_word.Split(' ');
+					if(words[index] == "SERT")
+					{
+						index++;
+					}
+					if(words[index] == "MVA")
+					{
+						index++;
+					}
+					dog_name_from_string = string_to_upper(words[index]);
+					index++;
+					//dog_name_from_string = words[1];
+					for(int i = index ; i < words.Length ; i++)
+					{
+						dog_name_from_string += " " + string_to_upper(words[i]);
+						//dog_name_from_string += " " + words[i];
+					}
+					
+					break;
+				}
+			}
+			return dog_name_from_string;
+		}
+		void ButtonGuessClick(object sender, EventArgs e)
+		{
+			string name;
+			string result_name;
+			dogIdentity dog_from_db;
+			
+			result_name = GetDogFromStrings("ROP,");
+			dog_from_db = GuessDog(result_name, coat);
+			if(dog_from_db.id == 0)
+			{
+				result_name = GetDogFromStrings("ROP ");
+				dog_from_db = GuessDog(result_name, coat);
+			}
+			rop_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			ropNameBox.Text = name;
+			
+			result_name = GetDogFromStrings("VSP,");
+			dog_from_db = GuessDog(result_name, coat);
+			if(dog_from_db.id == 0)
+			{
+				result_name = GetDogFromStrings("VSP ");
+				dog_from_db = GuessDog(result_name, coat);
+			}
+			vsp_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			vspNameBox.Text = name;
+			
+			result_name = GetDogFromStrings("PU-2");
+			dog_from_db = GuessDog(result_name, coat);
+			pu2_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			pu2NameBox.Text = name;
+			
+			result_name = GetDogFromStrings("PU-3");
+			dog_from_db = GuessDog(result_name, coat);
+			pu3_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			pu3NameBox.Text = name;
+			
+			result_name = GetDogFromStrings("PU-4");
+			dog_from_db = GuessDog(result_name, coat);
+			pu4_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			pu4NameBox.Text = name;
+			
+			result_name = GetDogFromStrings("PN-2");
+			dog_from_db = GuessDog(result_name, coat);
+			pn2_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			pn2NameBox.Text = name;
+			
+			result_name = GetDogFromStrings("PN-3");
+			dog_from_db = GuessDog(result_name, coat);
+			pn3_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			pn3NameBox.Text = name;
+			
+			result_name = GetDogFromStrings("PN-4");
+			dog_from_db = GuessDog(result_name, coat);
+			pn4_id = dog_from_db.id;
+			name = dog_from_db.dog_name;
+			pn4NameBox.Text = name;
+
+		}
+		
 	}
 }

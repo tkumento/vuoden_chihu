@@ -50,6 +50,8 @@ namespace chihu
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.updateButton = new System.Windows.Forms.Button();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.textBoxGuessVeteran = new System.Windows.Forms.TextBox();
+			this.buttonGuess = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// coatBox
@@ -57,8 +59,8 @@ namespace chihu
 			this.coatBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.coatBox.FormattingEnabled = true;
 			this.coatBox.Items.AddRange(new object[] {
-									"LK",
-									"PK"});
+			"LK",
+			"PK"});
 			this.coatBox.Location = new System.Drawing.Point(40, 35);
 			this.coatBox.Name = "coatBox";
 			this.coatBox.Size = new System.Drawing.Size(121, 21);
@@ -199,11 +201,31 @@ namespace chihu
 			this.checkBox1.UseVisualStyleBackColor = true;
 			this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1CheckedChanged);
 			// 
+			// textBoxGuessVeteran
+			// 
+			this.textBoxGuessVeteran.Location = new System.Drawing.Point(40, 319);
+			this.textBoxGuessVeteran.Multiline = true;
+			this.textBoxGuessVeteran.Name = "textBoxGuessVeteran";
+			this.textBoxGuessVeteran.Size = new System.Drawing.Size(355, 88);
+			this.textBoxGuessVeteran.TabIndex = 14;
+			// 
+			// buttonGuess
+			// 
+			this.buttonGuess.Location = new System.Drawing.Point(406, 319);
+			this.buttonGuess.Name = "buttonGuess";
+			this.buttonGuess.Size = new System.Drawing.Size(75, 23);
+			this.buttonGuess.TabIndex = 15;
+			this.buttonGuess.Text = "Guess";
+			this.buttonGuess.UseVisualStyleBackColor = true;
+			this.buttonGuess.Click += new System.EventHandler(this.ButtonGuessClick);
+			// 
 			// AddVeteranShow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(618, 437);
+			this.Controls.Add(this.buttonGuess);
+			this.Controls.Add(this.textBoxGuessVeteran);
 			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.updateButton);
 			this.Controls.Add(this.textBox1);
@@ -222,6 +244,7 @@ namespace chihu
 			this.Text = "AddVeteranShow";
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.Button updateButton;
@@ -237,5 +260,7 @@ namespace chihu
 		private System.Windows.Forms.TextBox judgeBox;
 		private System.Windows.Forms.TextBox showBox;
 		private System.Windows.Forms.ComboBox coatBox;
+		private System.Windows.Forms.TextBox textBoxGuessVeteran;
+		private System.Windows.Forms.Button buttonGuess;
 	}
 }

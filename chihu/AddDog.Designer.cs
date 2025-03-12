@@ -71,7 +71,7 @@ namespace chihu
 									"dog2"});
 			this.dogBox.Location = new System.Drawing.Point(370, 24);
 			this.dogBox.Name = "dogBox";
-			this.dogBox.Size = new System.Drawing.Size(163, 21);
+			this.dogBox.Size = new System.Drawing.Size(200, 21);
 			this.dogBox.TabIndex = 1;
 			this.dogBox.Text = "dog1";
 			this.dogBox.SelectedIndexChanged += new System.EventHandler(this.DogBoxSelectedIndexChanged);
@@ -96,11 +96,11 @@ namespace chihu
 			// 
 			// doneButton
 			// 
-			this.doneButton.Location = new System.Drawing.Point(576, 24);
+			this.doneButton.Location = new System.Drawing.Point(587, 22);
 			this.doneButton.Name = "doneButton";
 			this.doneButton.Size = new System.Drawing.Size(75, 23);
 			this.doneButton.TabIndex = 8;
-			this.doneButton.Text = "Done";
+			this.doneButton.Text = "Add";
 			this.doneButton.UseVisualStyleBackColor = true;
 			this.doneButton.Click += new System.EventHandler(this.DoneButtonClick);
 			// 
@@ -136,7 +136,7 @@ namespace chihu
 			// 
 			// noDogButton
 			// 
-			this.noDogButton.Location = new System.Drawing.Point(576, 63);
+			this.noDogButton.Location = new System.Drawing.Point(587, 63);
 			this.noDogButton.Name = "noDogButton";
 			this.noDogButton.Size = new System.Drawing.Size(75, 23);
 			this.noDogButton.TabIndex = 12;

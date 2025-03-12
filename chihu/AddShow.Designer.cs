@@ -63,6 +63,8 @@ namespace chihu
 			this.judgeComboBox = new System.Windows.Forms.ComboBox();
 			this.updateButton = new System.Windows.Forms.Button();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.textBoxGuess = new System.Windows.Forms.TextBox();
+			this.buttonGuess = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// showLocationBox
@@ -80,8 +82,8 @@ namespace chihu
 			// 
 			this.coatBox.FormattingEnabled = true;
 			this.coatBox.Items.AddRange(new object[] {
-									"LK",
-									"PK"});
+			"LK",
+			"PK"});
 			this.coatBox.Location = new System.Drawing.Point(39, 12);
 			this.coatBox.Name = "coatBox";
 			this.coatBox.Size = new System.Drawing.Size(121, 21);
@@ -115,8 +117,8 @@ namespace chihu
 			// 
 			this.showTypeBox.FormattingEnabled = true;
 			this.showTypeBox.Items.AddRange(new object[] {
-									"NAT",
-									"INT"});
+			"NAT",
+			"INT"});
 			this.showTypeBox.Location = new System.Drawing.Point(39, 122);
 			this.showTypeBox.Name = "showTypeBox";
 			this.showTypeBox.Size = new System.Drawing.Size(121, 21);
@@ -340,11 +342,31 @@ namespace chihu
 			this.checkBox1.UseVisualStyleBackColor = true;
 			this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1CheckedChanged);
 			// 
+			// textBoxGuess
+			// 
+			this.textBoxGuess.Location = new System.Drawing.Point(39, 412);
+			this.textBoxGuess.Multiline = true;
+			this.textBoxGuess.Name = "textBoxGuess";
+			this.textBoxGuess.Size = new System.Drawing.Size(446, 68);
+			this.textBoxGuess.TabIndex = 27;
+			// 
+			// buttonGuess
+			// 
+			this.buttonGuess.Location = new System.Drawing.Point(511, 428);
+			this.buttonGuess.Name = "buttonGuess";
+			this.buttonGuess.Size = new System.Drawing.Size(75, 23);
+			this.buttonGuess.TabIndex = 28;
+			this.buttonGuess.Text = "Guess";
+			this.buttonGuess.UseVisualStyleBackColor = true;
+			this.buttonGuess.Click += new System.EventHandler(this.ButtonGuessClick);
+			// 
 			// AddShow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(619, 492);
+			this.Controls.Add(this.buttonGuess);
+			this.Controls.Add(this.textBoxGuess);
 			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.updateButton);
 			this.Controls.Add(this.judgeComboBox);
@@ -377,6 +399,7 @@ namespace chihu
 			this.Click += new System.EventHandler(this.AmountBoxClick);
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.Button updateButton;
@@ -405,5 +428,7 @@ namespace chihu
 		private System.Windows.Forms.TextBox judgeBox;
 		private System.Windows.Forms.ComboBox coatBox;
 		private System.Windows.Forms.TextBox showLocationBox;
+		private System.Windows.Forms.TextBox textBoxGuess;
+		private System.Windows.Forms.Button buttonGuess;
 	}
 }
