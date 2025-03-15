@@ -102,10 +102,16 @@ def cap_string(raw_string):
 def output_line(output_file, row, format_string, price_index, index):
     "tulosta PU/PN rivi palkintoineen tiedostoon"
     if row[index]:
-        output_file.write(get_prices(row[price_index], format_string) + cap_string(row[index]) + '\n')
+        output_file.write(get_prices(row[price_index], format_string) + cap_string(row[index]) + '<br />\n')
     return
 
 def output_line_wo_price(output_file, row, format_string, index):
+    "tulosta rivi ilman palkintoja tiedostoon"
+    if row[index]:
+        output_file.write(format_string + ' ' + cap_string(row[index]) + '<br />\n')
+    return
+
+def output_line_wo_price_plain(output_file, row, format_string, index):
     "tulosta rivi ilman palkintoja tiedostoon"
     if row[index]:
         output_file.write(format_string + ' ' + cap_string(row[index]) + '\n')
@@ -118,10 +124,16 @@ def output_line_cap(output_file, row, format_string, index):
         cap_string = "-".join(w.capitalize() for w in dec_string.split('-'))
         new_string = cap_string.title()
         enc_string = new_string.encode('utf-8')
-        output_file.write(format_string + ' ' + enc_string + '\n')
+        output_file.write(format_string + ' ' + enc_string + '<br />\n')
     return
 
-def output_line_wo_cap(output_file, row, format_string, index):
+#def output_line_wo_cap(output_file, row, format_string, index):
+#    "tulosta rivi ilman palkintoja tiedostoon"
+#    if row[index]:
+#        output_file.write(format_string + ' ' + row[index] + '<br />\n')
+#    return
+
+def output_line_wo_cap_plain(output_file, row, format_string, index):
     "tulosta rivi ilman palkintoja tiedostoon"
     if row[index]:
         output_file.write(format_string + ' ' + row[index] + '\n')
@@ -177,7 +189,7 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 print('Processing: ' + row[paikka_index].rstrip() + ' ' + row[date_index] + ' ' + row[karva_index])
 
                 #show location
-                output_file.write('<h2>')
+                output_file.write('<h3>')
                 output_file.write(row[paikka_index].decode('utf-8').upper().rstrip().encode('utf-8') + ' ')
 
                 #show type
@@ -198,10 +210,10 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                     #formatted from yyyy-mm-dd to dd.mm.yyyy
                     splitted_date = row[date_index].split("-")
                     date_string = ".".join([splitted_date[2].lstrip("0"), splitted_date[1].lstrip("0"), splitted_date[0]])
-                    output_file.write(date_string + '</h2>\n')
+                    output_file.write(date_string + '</h3>\n')
                 else:
                     #no formatting (yet)
-                    output_file.write(row[date_index] + '</h2>\n')
+                    output_file.write(row[date_index] + '</h3>\n')
 
                 #coat
                 if ('Lyhyt' in row[karva_index]):
@@ -222,8 +234,8 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                     output_file.write(')')
 
                 #judge
-                output_line_cap(output_file, row, '\nTuomari:', tuomari_index)
-                output_file.write('\n')
+                output_line_cap(output_file, row, '<br />\nTuomari:', tuomari_index)
+                output_file.write('<br />\n')
 
                 #PU & PN
                 if 'Uros' == row[rop_index]:
@@ -302,14 +314,40 @@ with open('Vuoden Chihuahua -kisan pistelasku.csv') as File:
                 output_line_wo_price(output_file, row, '2, KP', (kasv_index + 1))
                 output_line_wo_price(output_file, row, '3, KP', (kasv_index + 2))
                 output_line_wo_price(output_file, row, '4, KP', (kasv_index + 3))
-                output_file.write('\n<hr />\n\n')
+                output_file.write('<br />\n<hr /><br />\n<br />\n')
 
                 #extras
-                output_line_wo_cap(output_file, row, 'Uros sert lisätieto:', uros_info_index)
-                output_line_wo_cap(output_file, row, 'Narttu sert lisätieto:', narttu_info_index)
-                output_line_wo_cap(output_file, row, 'Yhteystieto:', email_index)
-                output_line_wo_cap(output_file, row, 'Lisätiedot:', info_index)
+                output_line_wo_cap_plain(output_file, row, 'Uros sert lisätieto:', uros_info_index)
+                output_line_wo_cap_plain(output_file, row, 'Narttu sert lisätieto:', narttu_info_index)
+                output_line_wo_cap_plain(output_file, row, 'Yhteystieto:', email_index)
+                output_line_wo_cap_plain(output_file, row, 'Lisätiedot:', info_index)
                 output_file.write('\n\n')
+
+                # PU & PN
+                if 'Uros' == row[rop_index]:
+                    # uros ROP
+                    output_line_wo_price_plain(output_file, row, 'ROP, PU-1', uros_index)
+                    output_line_wo_price_plain(output_file, row, 'PU-2', (uros_index + 1))
+                    output_line_wo_price_plain(output_file, row, 'PU-3', (uros_index + 2))
+                    output_line_wo_price_plain(output_file, row, 'PU-4', (uros_index + 3))
+                    output_line_wo_price_plain(output_file, row, 'VSP, PN-1', narttu_index)
+                    output_line_wo_price_plain(output_file, row, 'PN-2', (narttu_index + 1))
+                    output_line_wo_price_plain(output_file, row, 'PN-3', (narttu_index + 2))
+                    output_line_wo_price_plain(output_file, row, 'PN-4', (narttu_index + 3))
+
+                else:
+                    # narttu ROP
+                    output_line_wo_price_plain(output_file, row, 'ROP, PN-1', narttu_index)
+                    output_line_wo_price_plain(output_file, row, 'PN-2', (narttu_index + 1))
+                    output_line_wo_price_plain(output_file, row, 'PN-3', (narttu_index + 2))
+                    output_line_wo_price_plain(output_file, row, 'PN-4', (narttu_index + 3))
+                    output_line_wo_price_plain(output_file, row, 'VSP, PU-1', uros_index)
+                    output_line_wo_price_plain(output_file, row, 'PU-2', (uros_index + 1))
+                    output_line_wo_price_plain(output_file, row, 'PU-3', (uros_index + 2))
+                    output_line_wo_price_plain(output_file, row, 'PU-4', (uros_index + 3))
+
+                output_file.write('\n\n')
+
             except ValueError:
                 #expected to have header row in CSV
                 print('header row ignored')
