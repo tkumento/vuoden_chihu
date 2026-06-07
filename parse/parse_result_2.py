@@ -97,7 +97,7 @@ def print_rows(rows):
 def main():
     if len(sys.argv) != 2:
         print(f"Usage: {sys.argv[0]} URL", file=sys.stderr)
-        printf("To parse show results from https://tulospalvelu.kennelliitto.fi")
+        print("To parse show results from https://tulospalvelu.kennelliitto.fi")
         print("py -3 parse_result_2.py \"<url>\"")
         sys.exit(1)
 
